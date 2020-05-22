@@ -2,8 +2,6 @@
 
 Fast Pure JavaScript MessagePack Encoder and Decoder
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/msgpack-lite.svg)](https://saucelabs.com/u/msgpack-lite)
-
 Online demo: [http://kawanet.github.io/msgpack-lite/](http://kawanet.github.io/msgpack-lite/)
 
 ### Features
@@ -12,8 +10,7 @@ Online demo: [http://kawanet.github.io/msgpack-lite/](http://kawanet.github.io/m
 - Faster than any other pure JavaScript libraries on node.js v4
 - Even faster than node-gyp C++ based [msgpack](https://www.npmjs.com/package/msgpack) library (**90% faster** on encoding)
 - Streaming encoding and decoding interface is also available. It's more faster.
-- Ready for [Web browsers](https://saucelabs.com/u/msgpack-lite) including Chrome, Firefox, Safari and even IE8
-- [Tested](https://travis-ci.org/kawanet/msgpack-lite) on Node.js v0.10, v0.12, v4, v5 and v6 as well as Web browsers
+- [Tested](https://travis-ci.org/kawanet/msgpack-lite) on Node.js v4, v6, v8 and v10 as well as Web browsers
 
 ### Encoding and Decoding MessagePack
 
@@ -105,8 +102,6 @@ Run tests on browsers:
 
 ```sh
 $ make test-browser-local
-open the following url in a browser:
-http://localhost:4000/__zuul
 ```
 
 ### Browser Build
@@ -386,18 +381,18 @@ The [compatibility mode](https://github.com/kawanet/msgpack-lite/issues/22) resp
 ```js
 // default mode handles both str and bin formats individually
 msgpack.encode("Aa"); // => <Buffer a2 41 61> (str format)
-msgpack.encode(new Buffer([0x41, 0x61])); // => <Buffer c4 02 41 61> (bin format)
+msgpack.encode(Buffer.from([0x41, 0x61])); // => <Buffer c4 02 41 61> (bin format)
 
-msgpack.decode(new Buffer([0xa2, 0x41, 0x61])); // => 'Aa' (String)
-msgpack.decode(new Buffer([0xc4, 0x02, 0x41, 0x61])); // => <Buffer 41 61> (Buffer)
+msgpack.decode(Buffer.from([0xa2, 0x41, 0x61])); // => 'Aa' (String)
+msgpack.decode(Buffer.from([0xc4, 0x02, 0x41, 0x61])); // => <Buffer 41 61> (Buffer)
 
 // compatibility mode handles only raw format both for String and Buffer
 var options = {codec: msgpack.createCodec({useraw: true})};
 msgpack.encode("Aa", options); // => <Buffer a2 41 61> (raw format)
-msgpack.encode(new Buffer([0x41, 0x61]), options); // => <Buffer a2 41 61> (raw format)
+msgpack.encode(Buffer.from([0x41, 0x61]), options); // => <Buffer a2 41 61> (raw format)
 
-msgpack.decode(new Buffer([0xa2, 0x41, 0x61]), options); // => <Buffer 41 61> (Buffer)
-msgpack.decode(new Buffer([0xa2, 0x41, 0x61]), options).toString(); // => 'Aa' (String)
+msgpack.decode(Buffer.from([0xa2, 0x41, 0x61]), options); // => <Buffer 41 61> (Buffer)
+msgpack.decode(Buffer.from([0xa2, 0x41, 0x61]), options).toString(); // => 'Aa' (String)
 ```
 
 ### Repository

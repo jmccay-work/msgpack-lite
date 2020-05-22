@@ -1,7 +1,7 @@
 {
   "name": "msgpack-lite",
   "description": "Fast Pure JavaScript MessagePack Encoder and Decoder",
-  "version": "0.1.26",
+  "version": "0.1.28",
   "author": "@kawanet",
   "bin": {
     "msgpack": "./bin/msgpack"
@@ -19,20 +19,23 @@
     "Maciej Hirsz <maciej.hirsz@gmail.com>"
   ],
   "dependencies": {
-    "event-lite": "^0.1.1",
-    "ieee754": "^1.1.8",
-    "int64-buffer": "^0.1.9",
-    "isarray": "^1.0.0"
+    "event-lite": "^0.1.2",
+    "ieee754": "^1.1.12",
+    "int64-buffer": "^0.99.1007",
+    "isarray": "^2.0.4"
   },
   "devDependencies": {
-    "async": "^2.1.1",
-    "browserify": "^13.1.0",
-    "concat-stream": "^1.5.2",
-    "jshint": "^2.9.3",
-    "mocha": "^3.1.2",
-    "msgpack.codec": "git+https://github.com/kawanet/msgpack-javascript.git#msgpack.codec",
-    "uglify-js": "^2.7.3",
-    "zuul": "^3.11.1"
+    "async": "^2.6.1",
+    "browserify": "^16.2.3",
+    "concat-stream": "^1.6.2",
+    "jshint": "^2.9.6",
+    "mocha": "^5.2.0",
+    "msgpack-test-js": "^0.1.1",
+    "uglify-js": "^3.3.28",
+    "zuul": "^3.12.0"
+  },
+  "engines": {
+    "node": ">= 4.5.0"
   },
   "homepage": "https://github.com/kawanet/msgpack-lite",
   "jshintConfig": {
